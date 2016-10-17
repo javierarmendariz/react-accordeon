@@ -89,6 +89,10 @@
 
       var _this = _possibleConstructorReturn(this, (Accordion.__proto__ || Object.getPrototypeOf(Accordion)).call(this, props));
 
+      _this.propTypes = {
+        // children: PropTypes.node,
+      };
+
       _this.state = {
         items: _this.getInitialItemsState(props),
         initialRender: true
@@ -219,10 +223,6 @@
 
     return Accordion;
   }(_react.Component);
-
-  Accordion.propTypes = {
-    children: _react.PropTypes.node
-  };
 
   exports.default = Accordion;
 });

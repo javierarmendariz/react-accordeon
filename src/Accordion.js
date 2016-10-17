@@ -2,7 +2,7 @@ import React, { PropTypes, Component, cloneElement } from 'react';
 import AccordionStyles from './AccordionStyles';
 
 class Accordion extends Component {
-  propTypes = {
+  static propTypes = {
     // children: PropTypes.node,
   }
 
