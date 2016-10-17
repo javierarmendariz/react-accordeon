@@ -1,4 +1,4 @@
-const AccordionStyles = {
+const AccordeonStyles = {
   list: {
     padding: '0px',
     border: '0px',
@@ -8,4 +8,4 @@ const AccordionStyles = {
   }
 };
 
-export default AccordionStyles;
+export default AccordeonStyles;

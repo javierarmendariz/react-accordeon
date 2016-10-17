@@ -1,10 +1,10 @@
 
 React Accordeon
 ===================
-React accordion component with expand/collapse CSS animation. The event trigger can be configured to any component, such in the Navigation and Content
+React Accordeon component with expand/collapse CSS animation. The event trigger can be configured to any component, such in the Navigation and Content
 
 - [Components](#components)
-  - [`<Accordion>`](#accordion)
+  - [`<Accordeon>`](#Accordeon)
   - [`<Panel>`](#panel)
   - [`<Nav>`](#nav)
   - [`<Content>`](#content)
@@ -13,7 +13,7 @@ React accordion component with expand/collapse CSS animation. The event trigger 
 
   ## Components
 
-  ### `<Accordion>`
+  ### `<Accordeon>`
   Primary component of React Accordeon. It keeps and handles the state of all the elements.
 
   #### Props
@@ -53,13 +53,13 @@ React accordion component with expand/collapse CSS animation. The event trigger 
   This does not required any property at this moment.
 
   ## Examples
-  Accordion with plain strings in the Nav and Content
+  Accordeon with plain strings in the Nav and Content
   ```js
   import React, { PropTypes } from 'react';
-  import { Accordion, Panel, Nav, Content } from 'react-accordeon';
+  import { Accordeon, Panel, Nav, Content } from 'react-accordeon';
   function ExampleOne(props) {
     return (
-      <Accordion>
+      <Accordeon>
         <Panel key="panel1">
           <Nav>Question 1</Nav>
           <Content>
@@ -72,7 +72,7 @@ React accordion component with expand/collapse CSS animation. The event trigger 
             And more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </Content>
         </Panel>
-      </Accordion>    
+      </Accordeon>    
       );
   }
   ```
@@ -80,19 +80,19 @@ React accordion component with expand/collapse CSS animation. The event trigger 
   Given valid React Components
   ```js
   import React, { PropTypes } from 'react';
-  import { Accordion, Panel, Nav, Content } from 'react-accordeon';
+  import { Accordeon, Panel, Nav, Content } from 'react-accordeon';
   import AnotherReactComponentNav from './Another-react-component-nav.js';
   import AnotherReactComponentContent from './Another-react-component-content.js';
   function ExampleOne(props) {
     return (
-      <Accordion>
+      <Accordeon>
         <Panel key="panel1">
           <Nav><AnotherReactComponent /></Nav>
           <Content>
             <AnotherReactComponentContent />
           </Content>
         </Panel>
-      </Accordion>    
+      </Accordeon>    
       );
   }
 
@@ -144,21 +144,20 @@ React accordion component with expand/collapse CSS animation. The event trigger 
   With some valid HTML
   ```js
   import React, { PropTypes } from 'react';
-  import { Accordion, Panel, Nav, Content } from 'react-accordeon';
+  import { Accordeon, Panel, Nav, Content } from 'react-accordeon';
   function ExampleOne(props) {
     return (
-      <Accordion>
+      <Accordeon>
         <Panel key="panel1">
           <Nav>Item 1</Nav>
           <Content>
             <img src="https://placekitten.com/g/500/500" alt="kitten" />
           </Content>
         </Panel>
-      </Accordion>    
+      </Accordeon>    
       );
   }
   ```
   ## Todo
   > - https://facebook.github.io/react/warnings/dont-call-proptypes.html
-  > - Change the component name 'Accordion' to 'Accordeon'
   > - Expand All/Collapse All

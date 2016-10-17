@@ -1,7 +1,7 @@
 import React, { PropTypes, Component, cloneElement } from 'react';
-import AccordionStyles from './AccordionStyles';
+import AccordeonStyles from './AccordeonStyles';
 
-class Accordion extends Component {
+class Accordeon extends Component {
   static propTypes = {
     // children: PropTypes.node,
   }
@@ -80,7 +80,7 @@ class Accordion extends Component {
     const { children } = this.props;
 
     if (typeof children === 'string') {
-      console.error('Accordion: At least one Panel component needs to be configured');
+      console.error('React Accordeon: At least one Panel component needs to be configured');
       return null;
     }
 
@@ -93,7 +93,7 @@ class Accordion extends Component {
             <div className="row expanded">
               <div className="small-12 columns">
                 <ul
-                  style={AccordionStyles.list}
+                  style={AccordeonStyles.list}
                   data-accordion
                   role="tablist"
                   aria-multiselectable
@@ -109,4 +109,4 @@ class Accordion extends Component {
   }
 }
 
-export default Accordion;
+export default Accordeon;

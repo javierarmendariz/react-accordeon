@@ -1,24 +1,24 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', './Accordion', './panel/Panel', './panel/nav/Nav', './panel/content/Content'], factory);
+    define(['exports', './Accordeon', './panel/Panel', './panel/nav/Nav', './panel/content/Content'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('./Accordion'), require('./panel/Panel'), require('./panel/nav/Nav'), require('./panel/content/Content'));
+    factory(exports, require('./Accordeon'), require('./panel/Panel'), require('./panel/nav/Nav'), require('./panel/content/Content'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Accordion, global.Panel, global.Nav, global.Content);
+    factory(mod.exports, global.Accordeon, global.Panel, global.Nav, global.Content);
     global.index = mod.exports;
   }
-})(this, function (exports, _Accordion, _Panel, _Nav, _Content) {
+})(this, function (exports, _Accordeon, _Panel, _Nav, _Content) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.Content = exports.Nav = exports.Panel = exports.Accordion = undefined;
+  exports.Content = exports.Nav = exports.Panel = exports.Accordeon = undefined;
 
-  var _Accordion2 = _interopRequireDefault(_Accordion);
+  var _Accordeon2 = _interopRequireDefault(_Accordeon);
 
   var _Panel2 = _interopRequireDefault(_Panel);
 
@@ -32,7 +32,7 @@
     };
   }
 
-  exports.Accordion = _Accordion2.default;
+  exports.Accordeon = _Accordeon2.default;
   exports.Panel = _Panel2.default;
   exports.Nav = _Nav2.default;
   exports.Content = _Content2.default;

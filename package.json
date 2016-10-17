@@ -1,7 +1,7 @@
 {
   "name": "react-accordeon",
-  "version": "1.0.3",
-  "description": "React accordion component with expand/collapse CSS animation. The event trigger can be configured to any component, such in the Navigation and Content",
+  "version": "1.0.4",
+  "description": "React Accordeon component with expand/collapse CSS animation. The event trigger can be configured to any component, such in the Navigation and Content",
   "repository": {
     "type": "git",
     "url": "https://github.com/javierarmendariz/react-accordeon.git"
@@ -16,6 +16,7 @@
     "react-component",
     "react",
     "accordion",
+    "accordeon",
     "collapse",
     "expand"
   ],
@@ -42,13 +43,16 @@
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
     "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^4.2.3",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",
-    "react-addons-test-utils": "^15.0.0",
     "react": "^15.0.0",
+    "react-addons-test-utils": "^15.0.0",
     "react-dom": "^15.0.0",
     "sinon": "^1.17.3"
   },
