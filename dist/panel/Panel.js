@@ -165,19 +165,11 @@
             },
             _react2.default.createElement(
               'div',
-              { className: 'row expanded' },
-              _react2.default.createElement(
-                'div',
-                { className: 'small-12 columns' },
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  children[0] && (0, _react.cloneElement)(children[0], {
-                    toggle: toggle,
-                    expanded: expanded
-                  })
-                )
-              )
+              null,
+              children[0] && (0, _react.cloneElement)(children[0], {
+                toggle: toggle,
+                expanded: expanded
+              })
             )
           ),
           _react2.default.createElement(
@@ -202,19 +194,11 @@
               },
               _react2.default.createElement(
                 'div',
-                { className: 'row expanded' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'small-12 columns' },
-                  _react2.default.createElement(
-                    'div',
-                    null,
-                    children[1] && (0, _react.cloneElement)(children[1], {
-                      toggle: toggle,
-                      expanded: expanded
-                    })
-                  )
-                )
+                null,
+                children[1] && (0, _react.cloneElement)(children[1], {
+                  toggle: toggle,
+                  expanded: expanded
+                })
               )
             ) : []
           )
@@ -226,12 +210,10 @@
   }(_react.Component);
 
   Panel.propTypes = {
-    /*
-    internalKey: PropTypes.string,
-    expanded: PropTypes.bool,
-    toggleItem: PropTypes.func,
-    children: PropTypes.node,
-    */
+    internalKey: _react2.default.PropTypes.string,
+    expanded: _react2.default.PropTypes.bool,
+    toggleItem: _react2.default.PropTypes.func,
+    children: _react2.default.PropTypes.node
   };
   exports.default = Panel;
 });

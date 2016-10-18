@@ -1,15 +1,13 @@
-import React, { PropTypes, cloneElement, Component } from 'react';
+import React, { cloneElement, Component } from 'react';
 import Transition from 'react-inline-transition-group';
 import styles from './PanelStyles.js';
 
 class Panel extends Component {
   static propTypes = {
-    /*
-    internalKey: PropTypes.string,
-    expanded: PropTypes.bool,
-    toggleItem: PropTypes.func,
-    children: PropTypes.node,
-    */
+    internalKey: React.PropTypes.string,
+    expanded: React.PropTypes.bool,
+    toggleItem: React.PropTypes.func,
+    children: React.PropTypes.node,
   }
 
   constructor(props) {
@@ -72,15 +70,11 @@ class Panel extends Component {
           id={`panel${internalKey}-heading`}
           aria-controls={`panel${internalKey}`}
         >
-          <div className="row expanded">
-            <div className="small-12 columns">
-              <div>
-                {children[0] && cloneElement(children[0], {
-                  toggle,
-                  expanded
-                })}
-              </div>
-            </div>
+          <div>
+            {children[0] && cloneElement(children[0], {
+              toggle,
+              expanded
+            })}
           </div>
         </nav>
         <Transition
@@ -100,15 +94,11 @@ class Panel extends Component {
               aria-labelledby={`panel${internalKey}-heading`}
               key={`article${internalKey}`}
             >
-              <div className="row expanded">
-                <div className="small-12 columns">
-                  <div>
-                    {children[1] && cloneElement(children[1], {
-                      toggle,
-                      expanded
-                    })}
-                  </div>
-                </div>
+              <div>
+                {children[1] && cloneElement(children[1], {
+                  toggle,
+                  expanded
+                })}
               </div>
             </article>
             : []

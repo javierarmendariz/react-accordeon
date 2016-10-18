@@ -1,9 +1,9 @@
-import React, { PropTypes, Component, cloneElement } from 'react';
+import React, { Component, cloneElement } from 'react';
 import AccordeonStyles from './AccordeonStyles';
 
 class Accordeon extends Component {
   static propTypes = {
-    // children: PropTypes.node,
+    children: React.PropTypes.node,
   }
 
   constructor(props) {
@@ -88,22 +88,14 @@ class Accordeon extends Component {
 
     return (
       <section>
-        <div className="row expanded">
-          <div className="small-12 columns">
-            <div className="row expanded">
-              <div className="small-12 columns">
-                <ul
-                  style={AccordeonStyles.list}
-                  data-accordion
-                  role="tablist"
-                  aria-multiselectable
-                >
-                  {childrenWithData}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ul
+          style={AccordeonStyles.list}
+          data-accordion
+          role="tablist"
+          aria-multiselectable
+        >
+          {childrenWithData}
+        </ul>
       </section>
     );
   }

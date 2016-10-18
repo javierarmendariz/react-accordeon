@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', './AccordionStyles'], factory);
+    define(['exports', 'react', './AccordeonStyles'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('./AccordionStyles'));
+    factory(exports, require('react'), require('./AccordeonStyles'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.AccordionStyles);
+    factory(mod.exports, global.react, global.AccordeonStyles);
     global.Accordeon = mod.exports;
   }
-})(this, function (exports, _react, _AccordionStyles) {
+})(this, function (exports, _react, _AccordeonStyles) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -19,7 +19,7 @@
 
   var _react2 = _interopRequireDefault(_react);
 
-  var _AccordionStyles2 = _interopRequireDefault(_AccordionStyles);
+  var _AccordeonStyles2 = _interopRequireDefault(_AccordeonStyles);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -81,13 +81,13 @@
     if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
   }
 
-  var Accordion = function (_Component) {
-    _inherits(Accordion, _Component);
+  var Accordeon = function (_Component) {
+    _inherits(Accordeon, _Component);
 
-    function Accordion(props) {
-      _classCallCheck(this, Accordion);
+    function Accordeon(props) {
+      _classCallCheck(this, Accordeon);
 
-      var _this = _possibleConstructorReturn(this, (Accordion.__proto__ || Object.getPrototypeOf(Accordion)).call(this, props));
+      var _this = _possibleConstructorReturn(this, (Accordeon.__proto__ || Object.getPrototypeOf(Accordeon)).call(this, props));
 
       _this.state = {
         items: _this.getInitialItemsState(props),
@@ -98,7 +98,7 @@
       return _this;
     }
 
-    _createClass(Accordion, [{
+    _createClass(Accordeon, [{
       key: 'getInitialItemsState',
       value: function getInitialItemsState(props) {
         var children = props.children;
@@ -178,7 +178,7 @@
 
 
         if (typeof children === 'string') {
-          console.error('Accordion: At least one Panel component needs to be configured');
+          console.error('React Accordeon: At least one Panel component needs to be configured');
           return null;
         }
 
@@ -188,40 +188,24 @@
           'section',
           null,
           _react2.default.createElement(
-            'div',
-            { className: 'row expanded' },
-            _react2.default.createElement(
-              'div',
-              { className: 'small-12 columns' },
-              _react2.default.createElement(
-                'div',
-                { className: 'row expanded' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'small-12 columns' },
-                  _react2.default.createElement(
-                    'ul',
-                    {
-                      style: _AccordionStyles2.default.list,
-                      'data-accordion': true,
-                      role: 'tablist',
-                      'aria-multiselectable': true
-                    },
-                    childrenWithData
-                  )
-                )
-              )
-            )
+            'ul',
+            {
+              style: _AccordeonStyles2.default.list,
+              'data-accordion': true,
+              role: 'tablist',
+              'aria-multiselectable': true
+            },
+            childrenWithData
           )
         );
       }
     }]);
 
-    return Accordion;
+    return Accordeon;
   }(_react.Component);
 
-  Accordion.propTypes = {
-    // children: PropTypes.node,
+  Accordeon.propTypes = {
+    children: _react2.default.PropTypes.node
   };
-  exports.default = Accordion;
+  exports.default = Accordeon;
 });

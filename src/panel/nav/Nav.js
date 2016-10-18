@@ -1,4 +1,4 @@
-import React, { PropTypes, cloneElement } from 'react';
+import React, { cloneElement } from 'react';
 
 const Nav = (props) => {
   const { expanded, toggle, children } = props;
@@ -16,11 +16,9 @@ const Nav = (props) => {
 };
 
 Nav.propTypes = {
-  /*
-  toggle: PropTypes.func,
-  expanded: PropTypes.bool,
-  children: PropTypes.node,
-  */
+  toggle: React.PropTypes.func,
+  expanded: React.PropTypes.bool,
+  children: React.PropTypes.node,
 };
 
 export default Nav;

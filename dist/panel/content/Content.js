@@ -50,11 +50,9 @@
   };
 
   Content.propTypes = {
-    /*
-    toggle: PropTypes.func,
-    expanded: PropTypes.bool,
-    children: PropTypes.node,
-    */
+    toggle: _react2.default.PropTypes.func,
+    expanded: _react2.default.PropTypes.bool,
+    children: _react2.default.PropTypes.node
   };
 
   exports.default = Content;
