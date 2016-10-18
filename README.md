@@ -159,5 +159,5 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
   }
   ```
   ## Todo
-  > - https://facebook.github.io/react/warnings/dont-call-proptypes.html
-  > - Expand All/Collapse All
+  > - Expand/Collapse All
+  > - Expand/Collapse one Panel at a time
