@@ -91,10 +91,13 @@
 
       _this.state = {
         items: _this.getInitialItemsState(props),
-        initialRender: true
+        initialRender: true,
+        areAllExpanded: null
       };
 
       _this.toggleItem = _this.toggleItem.bind(_this);
+      _this.expandAll = _this.expandAll.bind(_this);
+      _this.collapseAll = _this.collapseAll.bind(_this);
       return _this;
     }
 
@@ -152,16 +155,63 @@
 
         var items = Object.assign({}, this.state.items);
 
-        var workoutExist = items.hasOwnProperty(internalKey);
-        if (!workoutExist) {
+        var itemExist = items.hasOwnProperty(internalKey);
+        if (!itemExist) {
           items[internalKey] = {};
         }
         items[internalKey].expanded = !expanded;
 
         this.setState({
           items: items,
-          initialRender: false
+          initialRender: false,
+          areAllExpanded: null
         });
+      }
+    }, {
+      key: 'toggleAll',
+      value: function toggleAll(expandCollapse) {
+        var items = Object.assign({}, this.state.items);
+        var itemsKeys = Object.keys(items);
+
+        itemsKeys.forEach(function (key) {
+          items[key].expanded = expandCollapse;
+        });
+
+        this.setState({
+          items: items,
+          initialRender: false,
+          areAllExpanded: expandCollapse
+        });
+      }
+    }, {
+      key: 'expandAll',
+      value: function expandAll() {
+        var areAllExpanded = this.state.areAllExpanded;
+
+        if (!areAllExpanded) {
+          this.toggleAll(true);
+        }
+      }
+    }, {
+      key: 'collapseAll',
+      value: function collapseAll() {
+        var areAllExpanded = this.state.areAllExpanded;
+
+        if (areAllExpanded === null || areAllExpanded) {
+          this.toggleAll(false);
+        }
+      }
+    }, {
+      key: 'createHeaderFooter',
+      value: function createHeaderFooter(component, componentName) {
+        component = (0, _react.isValidElement)(component) && (0, _react.cloneElement)(component, {
+          expandAll: this.expandAll,
+          collapseAll: this.collapseAll
+        });
+        if (component !== null && !component) {
+          console.error('React Accordeon: The ' + componentName + ' property must be a valid React component.');
+        }
+        return component;
       }
     }, {
       key: 'isLIExpanded',
@@ -174,28 +224,49 @@
     }, {
       key: 'render',
       value: function render() {
-        var children = this.props.children;
+        var _props = this.props;
+        var children = _props.children;
+        var _props$header = _props.header;
+        var header = _props$header === undefined ? null : _props$header;
+        var _props$footer = _props.footer;
+        var footer = _props$footer === undefined ? null : _props$footer;
 
+        var headerComponent = this.createHeaderFooter(header, 'Header');
+        var footerComponent = this.createHeaderFooter(footer, 'Footer');
 
         if (typeof children === 'string') {
-          console.error('React Accordeon: At least one Panel component needs to be configured');
+          console.error('React Accordeon: At least one Panel component needs to be configured.');
           return null;
         }
 
         var childrenWithData = this.getChildrenWithData(children);
 
         return _react2.default.createElement(
-          'section',
+          'article',
           null,
+          headerComponent && _react2.default.createElement(
+            'header',
+            null,
+            headerComponent
+          ),
           _react2.default.createElement(
-            'ul',
-            {
-              style: _AccordeonStyles2.default.list,
-              'data-accordion': true,
-              role: 'tablist',
-              'aria-multiselectable': true
-            },
-            childrenWithData
+            'section',
+            null,
+            _react2.default.createElement(
+              'ul',
+              {
+                style: _AccordeonStyles2.default.list,
+                'data-accordion': true,
+                role: 'tablist',
+                'aria-multiselectable': true
+              },
+              childrenWithData
+            )
+          ),
+          footerComponent && _react2.default.createElement(
+            'footer',
+            null,
+            footerComponent
           )
         );
       }
@@ -205,7 +276,9 @@
   }(_react.Component);
 
   Accordeon.propTypes = {
-    children: _react2.default.PropTypes.node
+    children: _react2.default.PropTypes.node,
+    header: _react2.default.PropTypes.element,
+    footer: _react2.default.PropTypes.element
   };
   exports.default = Accordeon;
 });

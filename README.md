@@ -17,25 +17,36 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
   Primary component of React Accordeon. It keeps and handles the state of all the elements.
 
   #### Props
-  This does not required any property at this moment.
+  ##### `header` (optional)
+  A valid React component that will be rendered in a `<header>` html tag. This component will be provided with the two property functions expandAll and collapseAll.
+
+  ##### `footer` (optional)
+  A valid React component that will be rendered in a `<footer>` html tag. This component will be provided with the two property functions expandAll and collapseAll.
+
+  #### Example
+  ```js
+  import Header from './Header.js';
+  import Footer from './Footer.js';
+  <Accordeon header={<Header />} footer={<Footer />}>
+  ```
 
   ### `<Panel>`
   The Panel component is the container for each element in the accordeon. This will create the collapse/expand animation for the Content component.
 
   #### Props
-  ##### `expanded`
+  ##### `expanded` (optional)
   Boolean value to configure an initial state for the Panel. If true, the Panel is expanded. If false, the Panel is collapsed.
 
   #### Examples
   #####Item expanded
   ```js
-  <Panel key="panel1" extended>
+  <Panel key="panel1" expanded>
   ```
   #####Item collapsed
   ```js
-  <Panel key="panel1" extended={false}>
+  <Panel key="panel1" expanded={false}>
   ```
-  or the extended property can also be omitted
+  or the expanded property can also be omitted
   ```js
   <Panel key="panel1">
   ```
@@ -44,13 +55,13 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
   This component accepts any string or any valid React component to render the Panel Header.
 
   #### Props
-  This does not required any property at this moment.
+  This does not require any property at this moment.
 
   ### `<Content>`
   Any string, html tag, or a valid React component
 
   #### Props
-  This does not required any property at this moment.
+  This does not require any property at this moment.
 
   ## Examples
   Accordeon with plain strings in the Nav and Content
@@ -143,7 +154,7 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
 
   With some valid HTML
   ```js
-  import React, { PropTypes } from 'react';
+  import React from 'react';
   import { Accordeon, Panel, Nav, Content } from 'react-accordeon';
   function ExampleOne(props) {
     return (
@@ -158,6 +169,67 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
       );
   }
   ```
+
+  Accordeon with Header and Footer
+  ```js
+  import React from 'react';
+  import { Accordeon, Panel, Nav, Content } from 'react-accordeon';
+  import Header from './Header';
+  import Footer from './Footer';
+  import NavComponent from './NavComponent';
+  import ContentComponent from './ContentComponent';
+  <Accordeon header={<Header />} footer={<Footer />}>
+    <Panel key="panel1">
+      <Nav>Question 1</Nav>
+      <Content>
+        <div>
+          <img src="https://placekitten.com/g/500/500" alt="kittlen" />
+        </div>
+      </Content>
+    </Panel>
+    <Panel key="panel2" expanded>
+      <Nav><NavComponent /></Nav>
+      <Content><ContentComponent /></Content>
+    </Panel>
+  </Accordeon>
+
+  // The Header must be a valid React component (Header.js).
+  // Two functions are passed as properties: expandAll, collapseAll
+  import React from 'react';
+  const Header = (props) => {
+    const { expandAll, collapseAll } = props;
+    return (
+      <div>
+        <button onClick={expandAll}>Expand All</button> / <button onClick={collapseAll}>Collapse All</button>
+      </div>
+    );
+  };
+
+  Header.propTypes = {
+    expandAll: React.PropTypes.func,
+    collapseAll: React.PropTypes.func,
+  };
+
+  export default Header;
+
+  // The Footer must be a valid React component (Footer.js).
+  // Two functions are also passed as properties: expandAll, collapseAll
+  import React from 'react';
+  const Footer = (props) => {
+    const { expandAll, collapseAll } = props;
+    return (
+      <div>
+        <span onClick={expandAll}>Expand All</span> / <span onClick={collapseAll}>Collapse All</span>
+      </div>
+    );
+  };
+
+  Footer.propTypes = {
+    expandAll: React.PropTypes.func,
+    collapseAll: React.PropTypes.func,
+  };
+
+  export default Footer;
+  ```
   ## Todo
-  > - Expand/Collapse All
   > - Expand/Collapse one Panel at a time

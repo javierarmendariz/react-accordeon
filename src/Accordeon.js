@@ -1,9 +1,11 @@
-import React, { Component, cloneElement } from 'react';
+import React, { Component, cloneElement, isValidElement } from 'react';
 import AccordeonStyles from './AccordeonStyles';
 
 class Accordeon extends Component {
   static propTypes = {
     children: React.PropTypes.node,
+    header: React.PropTypes.element,
+    footer: React.PropTypes.element,
   }
 
   constructor(props) {
@@ -11,9 +13,12 @@ class Accordeon extends Component {
     this.state = ({
       items: this.getInitialItemsState(props),
       initialRender: true,
+      areAllExpanded: null,
     });
 
     this.toggleItem = this.toggleItem.bind(this);
+    this.expandAll = this.expandAll.bind(this);
+    this.collapseAll = this.collapseAll.bind(this);
   }
 
   getInitialItemsState(props) {
@@ -58,8 +63,8 @@ class Accordeon extends Component {
   toggleItem({ internalKey, expanded }) {
     const items = Object.assign({}, this.state.items);
 
-    const workoutExist = items.hasOwnProperty(internalKey);
-    if (!workoutExist) {
+    const itemExist = items.hasOwnProperty(internalKey);
+    if (!itemExist) {
       items[internalKey] = {};
     }
     items[internalKey].expanded = !expanded;
@@ -67,7 +72,49 @@ class Accordeon extends Component {
     this.setState({
       items,
       initialRender: false,
+      areAllExpanded: null,
     });
+  }
+
+  toggleAll(expandCollapse) {
+    const items = Object.assign({}, this.state.items);
+    const itemsKeys = Object.keys(items);
+
+    itemsKeys.forEach((key) => {
+      items[key].expanded = expandCollapse;
+    });
+
+    this.setState({
+      items,
+      initialRender: false,
+      areAllExpanded: expandCollapse,
+    });
+  }
+
+  expandAll() {
+    const { areAllExpanded } = this.state;
+    if (!areAllExpanded) {
+      this.toggleAll(true);
+    }
+  }
+
+  collapseAll() {
+    const { areAllExpanded } = this.state;
+    if (areAllExpanded === null || areAllExpanded) {
+      this.toggleAll(false);
+    }
+  }
+
+  createHeaderFooter(component, componentName) {
+    component = isValidElement(component) && cloneElement(component, {
+      expandAll: this.expandAll,
+      collapseAll: this.collapseAll
+    });
+    if (component !== null && !component) {
+      console
+      .error(`React Accordeon: The ${componentName} property must be a valid React component.`);
+    }
+    return component;
   }
 
   isLIExpanded(internalKey) {
@@ -77,26 +124,32 @@ class Accordeon extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, header = null, footer = null } = this.props;
+    const headerComponent = this.createHeaderFooter(header, 'Header');
+    const footerComponent = this.createHeaderFooter(footer, 'Footer');
 
     if (typeof children === 'string') {
-      console.error('React Accordeon: At least one Panel component needs to be configured');
+      console.error('React Accordeon: At least one Panel component needs to be configured.');
       return null;
     }
 
     const childrenWithData = this.getChildrenWithData(children);
 
     return (
-      <section>
-        <ul
-          style={AccordeonStyles.list}
-          data-accordion
-          role="tablist"
-          aria-multiselectable
-        >
-          {childrenWithData}
-        </ul>
-      </section>
+      <article>
+        {headerComponent && <header>{headerComponent}</header>}
+        <section>
+          <ul
+            style={AccordeonStyles.list}
+            data-accordion
+            role="tablist"
+            aria-multiselectable
+          >
+            {childrenWithData}
+          </ul>
+        </section>
+        {footerComponent && <footer>{footerComponent}</footer>}
+      </article>
     );
   }
 }
