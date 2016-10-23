@@ -37,7 +37,7 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
   ##### `expanded` (optional)
   Boolean value to configure an initial state for the Panel. If true, the Panel is expanded. If false, the Panel is collapsed.
 
-  #### Examples
+  #### Example
   #####Item expanded
   ```js
   <Panel key="panel1" expanded>
@@ -87,6 +87,8 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
       );
   }
   ```
+
+  [Demo](http://jearwebdevelopment.com/react-accordeon/#strings)
 
   Given valid React Components
   ```js
@@ -152,6 +154,8 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
   export default Content;
   ```
 
+  [Demo](http://jearwebdevelopment.com/react-accordeon/#react-component)
+
   With some valid HTML
   ```js
   import React from 'react';
@@ -169,6 +173,8 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
       );
   }
   ```
+
+  [Demo](http://jearwebdevelopment.com/react-accordeon/#valid-html)
 
   Accordeon with Header and Footer
   ```js
@@ -231,5 +237,12 @@ React Accordeon component with expand/collapse CSS animation. The event trigger 
 
   export default Footer;
   ```
+
+  [Demo](http://jearwebdevelopment.com/react-accordeon/#header-footer)
+
+  Nested Accordeons
+  [Demo](http://jearwebdevelopment.com/react-accordeon/#nested)
+
   ## Todo
+  > - Header and Footer error handling
   > - Expand/Collapse one Panel at a time

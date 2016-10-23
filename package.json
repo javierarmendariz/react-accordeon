@@ -1,6 +1,6 @@
 {
   "name": "react-accordeon",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Accordeon component with expand/collapse CSS animation. The event trigger can be configured to any component, such in the Navigation and Content",
   "repository": {
     "type": "git",
